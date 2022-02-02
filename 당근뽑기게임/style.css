@@ -1,0 +1,93 @@
+*{
+    padding:0;
+    margin:0;
+}
+
+/* .background{
+    height:100vh;
+    background-image: url(./img/background.png);
+    background-repeat: no-repeat;
+    background-size:contain;
+    background-position:center;
+} */
+/* height:100vh는 화면에 맞게 꽉 채워줌. 근데 원본으로 하고싶으면 contain 써줘야됨. 안그러면 화면에 맞추가다 조금 잘리기도 함. */
+
+.all-wrap{
+    height:100vh;
+    background:black;
+}
+.background{
+    height:auto;
+    position:relative;
+}
+.background>img{
+    width:80vw;
+    display:block;
+    margin:0 auto;
+    border-radius:50px;
+    box-sizing: border-box;
+    transform:translateY(50px);
+}
+
+
+/* 아이콘 시작 */
+.icons>.timer-start{
+    width:60px;
+    height:60px;
+    background:burlywood;
+    position:absolute;
+    top:60px;
+    left:50%;
+    transform:translateX(-50%);
+    border:5px solid black;
+    border-radius: 10px;
+}
+
+.icons>.timer-count{
+    width:150px;
+    height:40px;
+    background:white;
+    border:5px solid black;
+    border-radius: 10px;
+    position:absolute;
+    top:140px;
+    left:50%;
+    transform:translateX(-50%);
+    text-align: center;
+    font-size:30px;
+}
+/* 아이콘 끝 */
+
+
+/* 필드 시작 */
+.field{
+    position:absolute;
+    background:green;
+    width:80vw;
+    height:calc(80vw/5);
+    top:78%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    /* opacity:0.5; */
+}
+.field>.bug,
+.field>.carrot{
+    position:absolute;
+}
+.field>.carrot:hover{
+    transform:scale(1.15);
+}
+
+
+
+.gameover{
+    width:300px;
+    height:300px;
+    background:rgba(255, 0, 0, 0.3);
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%);
+    text-align: center;
+    line-height:300px;
+}
