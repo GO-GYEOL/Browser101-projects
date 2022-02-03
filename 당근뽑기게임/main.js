@@ -8,6 +8,7 @@ let lefttime = 10;
 let timer;
 function onCount(){
     makingProcess();
+    timer = setInterval(printingCount, 1000);
 }
 function printingCount(){
     count.innerHTML = lefttime;
@@ -40,6 +41,7 @@ function makingProcess(){
         if(event.target.parentElement.className=="carrot"){
             event.target.parentElement.remove();
         } else if (event.target.parentElement.className=="bug") {
+            clearTimeout(timer);
             gameOver();
         }
     });
@@ -82,14 +84,16 @@ function makingBugCoordinateY(){
 function gameOver(){
     const div  = document.createElement('div')
     div.setAttribute('class', 'gameover')
-    div.innerHTML = `<h1>gameOver</h1>`
+    div.innerHTML = `<div>
+    <h1>gameOver</h1>
+    <h2>click to retry</h2></div>`
     field.appendChild(div);
     div.addEventListener('click',retry);
 }
 
-function retry(){
+function retry(event){
     while(field.hasChildNodes()){
-        field.removeChild(field.firstChild);
+        field.firstChild.remove();
     }
     // 여기서 gameover div도 지워버리는구나~
     clearTimeout(timer);
@@ -97,3 +101,20 @@ function retry(){
     onCount();
 }
 
+function victory(){
+    const div = document.createElement('div');
+    div.setAttribute('class', 'victory');
+    div.innerHTML = `<div>
+    <h1>Victory</h1>
+    <h2>click to retry</h2></div>`
+    field.appendChild(div);
+    div.addEventListener('click',retry);
+}
+
+field.addEventListener('click', () => {
+    let carrots = field.querySelectorAll('.carrot');
+    if(carrots.length==1){
+        clearTimeout(timer);
+        victory();
+    }
+})
